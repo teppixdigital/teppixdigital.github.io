@@ -17,7 +17,7 @@ Repository Root/
 └── assets/                           # Static assets served by Jekyll
     └── posts/                        # Post-specific media (mirrors _posts structure)
         └── YYYY/                     # Year
-            └── MM/                   # Month  
+            └── MM/                   # Month
                 └── DD/               # Day
                     ├── images/       # Images for this post
                     │   ├── screenshot.png
