@@ -2,28 +2,41 @@
 
 ## Overview
 
-All blog posts are organized in date-based folders to keep content and media together. This structure makes it easy to manage posts and their associated files.
+All blog posts are organized in date-based folders with a parallel media structure. Posts are stored in `_posts/YYYY/MM/DD/` and their media files are stored in `assets/posts/YYYY/MM/DD/`. This structure makes it easy to manage posts and their associated files while ensuring Jekyll correctly serves all media.
 
 ## Folder Structure
 
 ```
-_posts/
-└── YYYY/               # Year (e.g., 2026)
-    └── MM/             # Month (e.g., 01 for January)
-        └── DD/         # Day (e.g., 28)
-            ├── YYYY-MM-DD-title-of-post.md   # The post file
-            ├── images/                        # Images folder
-            │   ├── screenshot.png
-            │   └── diagram.svg
-            └── files/                         # Other files (optional)
-                └── document.pdf
+Repository Root/
+├── _posts/                           # Blog post markdown files
+│   └── YYYY/                         # Year (e.g., 2026)
+│       └── MM/                       # Month (e.g., 01 for January)
+│           └── DD/                   # Day (e.g., 28)
+│               └── YYYY-MM-DD-title-of-post.md
+│
+└── assets/                           # Static assets served by Jekyll
+    └── posts/                        # Post-specific media (mirrors _posts structure)
+        └── YYYY/                     # Year
+            └── MM/                   # Month  
+                └── DD/               # Day
+                    ├── images/       # Images for this post
+                    │   ├── screenshot.png
+                    │   └── diagram.svg
+                    └── files/        # Other files (PDFs, downloads, etc.)
+                        └── document.pdf
 ```
+
+## Why This Structure?
+
+**Jekyll Compatibility**: Jekyll only processes markdown files from `_posts/` directory. Media files must be in directories that Jekyll copies to the output site (like `assets/`).
+
+**Parallel Organization**: The date-based folder structure in both `_posts/` and `assets/posts/` keeps related content logically grouped while respecting Jekyll's build process.
 
 ## Creating a New Post
 
-### Step 1: Create the Date Folder
+### Step 1: Create the Post Date Folder
 
-Create a folder structure matching your post date:
+Create a folder structure in `_posts/` matching your post date:
 
 ```bash
 mkdir -p _posts/2026/01/30
@@ -34,11 +47,20 @@ mkdir -p _posts/2026/01/30
 Create your markdown file with the standard Jekyll naming convention:
 
 ```bash
-# Format: YYYY-MM-DD-title-of-post.md
-_posts/2026/01/30/2026-01-30-my-new-post.md
+# Create the post file
+touch _posts/2026/01/30/2026-01-30-my-new-post.md
 ```
 
-### Step 3: Add Front Matter
+### Step 3: Create the Media Folder (Optional)
+
+If your post will include images or other media:
+
+```bash
+mkdir -p assets/posts/2026/01/30/images
+mkdir -p assets/posts/2026/01/30/files  # For PDFs, downloads, etc.
+```
+
+### Step 4: Add Front Matter
 
 Start your post with YAML front matter:
 
@@ -52,36 +74,39 @@ date: 2026-01-30 10:00:00 +0000
 Your post content starts here...
 ```
 
-### Step 4: Add Media Files
+### Step 5: Add Media Files
 
-Create subdirectories for organizing media:
+Add your images, PDFs, or other files to the media folder:
 
 ```bash
-mkdir -p _posts/2026/01/30/images
-mkdir -p _posts/2026/01/30/files
+# Copy your media files
+cp my-diagram.png assets/posts/2026/01/30/images/
+cp my-document.pdf assets/posts/2026/01/30/files/
 ```
 
-### Step 5: Reference Media in Your Post
+### Step 6: Reference Media in Your Post
 
-Use relative paths to reference media files:
+Use Jekyll's `relative_url` filter to reference media files with absolute paths:
 
 ```markdown
 ## Example Section
 
-Here's an image from the same folder:
+Here's an image for this post:
 
-![Alt text](images/my-image.png)
+![Alt text]({{ '/assets/posts/2026/01/30/images/my-diagram.png' | relative_url }})
 
-Or reference a file:
+Or reference a downloadable file:
 
-[Download PDF](files/document.pdf)
+[Download PDF]({{ '/assets/posts/2026/01/30/files/my-document.pdf' | relative_url }})
 ```
+
+**Important**: Always use the full path starting with `/assets/posts/YYYY/MM/DD/` and wrap it in Liquid tags with the `relative_url` filter. This ensures the URLs work correctly whether the site is deployed at the root or in a subdirectory.
 
 ## Best Practices
 
-1. **Keep Media With Posts**: Store all images, files, and media used in a post within that post's date folder.
+1. **Mirror the Structure**: Always create the same YYYY/MM/DD folder structure in both `_posts/` and `assets/posts/` for consistency.
 
-2. **Use Subdirectories**: Create `images/` and `files/` subdirectories to keep things organized.
+2. **Use Subdirectories**: Create `images/` and `files/` subdirectories under `assets/posts/YYYY/MM/DD/` to keep different media types organized.
 
 3. **Descriptive Names**: Use clear, descriptive names for media files:
    - Good: `architecture-diagram.png`
@@ -89,15 +114,18 @@ Or reference a file:
 
 4. **Optimize Images**: Compress images before adding them to keep repository size manageable.
 
-5. **Relative Paths**: Always use relative paths when referencing media files in posts.
+5. **Use Liquid Filters**: Always use Jekyll's `relative_url` filter for media paths to ensure compatibility.
 
 ## Example Post Structure
 
 Here's a complete example of a well-organized post:
 
+**File Structure:**
 ```
 _posts/2026/01/30/
-├── 2026-01-30-building-microservices.md
+└── 2026-01-30-building-microservices.md
+
+assets/posts/2026/01/30/
 ├── images/
 │   ├── architecture-overview.svg
 │   ├── service-diagram.png
@@ -106,7 +134,7 @@ _posts/2026/01/30/
     └── api-documentation.pdf
 ```
 
-And in the markdown file:
+**In the markdown file (_posts/2026/01/30/2026-01-30-building-microservices.md):**
 
 ```markdown
 ---
@@ -119,26 +147,26 @@ date: 2026-01-30 15:30:00 +0000
 
 Here's our microservices architecture:
 
-![Architecture Overview](images/architecture-overview.svg)
+![Architecture Overview]({{ '/assets/posts/2026/01/30/images/architecture-overview.svg' | relative_url }})
 
 ## Service Communication
 
 The following diagram shows how services communicate:
 
-![Service Diagram](images/service-diagram.png)
+![Service Diagram]({{ '/assets/posts/2026/01/30/images/service-diagram.png' | relative_url }})
 
 ## Documentation
 
-For complete API documentation, see [API Docs](files/api-documentation.pdf).
+For complete API documentation, see the [API Docs]({{ '/assets/posts/2026/01/30/files/api-documentation.pdf' | relative_url }}).
 ```
 
 ## Why This Structure?
 
 1. **Logical Organization**: Posts are grouped by date, making them easy to find.
-2. **Self-Contained**: Each post folder contains everything needed for that post.
-3. **No Conflicts**: Media files for different posts won't conflict.
-4. **Easy Maintenance**: When updating or removing a post, everything is in one place.
-5. **Jekyll Compatible**: Jekyll supports this structure natively.
+2. **Parallel Structure**: Media files mirror the post structure in `assets/`, keeping related content grouped.
+3. **No Conflicts**: Media files for different posts won't conflict due to date-based folders.
+4. **Easy Maintenance**: All files for a post are organized by the same date structure.
+5. **Jekyll Compatible**: Jekyll properly serves files from `assets/` directory.
 
 ## Migration from Flat Structure
 
@@ -148,6 +176,29 @@ If you have posts in the old flat structure (`_posts/YYYY-MM-DD-title.md`), migr
 # For a post dated 2026-01-30
 mkdir -p _posts/2026/01/30
 mv _posts/2026-01-30-my-post.md _posts/2026/01/30/
+
+# If the post has media, create the parallel structure
+mkdir -p assets/posts/2026/01/30/images
+# Move any existing media files to the new location
+```
+
+## Quick Reference
+
+**Post file location:**
+```
+_posts/YYYY/MM/DD/YYYY-MM-DD-title.md
+```
+
+**Media file location:**
+```
+assets/posts/YYYY/MM/DD/images/filename.png
+assets/posts/YYYY/MM/DD/files/filename.pdf
+```
+
+**Media reference in post:**
+```markdown
+![Image]({{ '/assets/posts/YYYY/MM/DD/images/filename.png' | relative_url }})
+[Download]({{ '/assets/posts/YYYY/MM/DD/files/filename.pdf' | relative_url }})
 ```
 
 ## Notes

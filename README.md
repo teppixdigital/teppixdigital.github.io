@@ -26,11 +26,13 @@ This repository contains a clean, modern blog layout built using Jekyll, the sta
 │   └── YYYY/            # Year folder
 │       └── MM/          # Month folder
 │           └── DD/      # Day folder
-│               ├── YYYY-MM-DD-title-of-post.md
-│               └── images/  # Post-specific media files
+│               └── YYYY-MM-DD-title-of-post.md
 ├── assets/              # Static assets
-│   └── css/
-│       └── style.css    # Stylesheet
+│   ├── css/
+│   │   └── style.css    # Stylesheet
+│   └── posts/           # Post-specific media files
+│       └── YYYY/MM/DD/  # Mirrors _posts date structure
+│           └── images/  # Images for specific post
 └── index.html           # Homepage (blog list)
 ```
 
@@ -40,7 +42,7 @@ To add a new blog post:
 
 1. Create a date-based folder structure: `_posts/YYYY/MM/DD/`
 2. Create your post file: `_posts/YYYY/MM/DD/YYYY-MM-DD-title-of-post.md`
-3. (Optional) Create an `images/` folder in the same directory for post-specific media
+3. (Optional) Create a parallel media folder: `assets/posts/YYYY/MM/DD/images/`
 4. Add front matter at the top of your post:
 
 ```markdown
@@ -53,23 +55,26 @@ date: YYYY-MM-DD HH:MM:SS +0000
 Your content here...
 ```
 
-5. Reference media files using relative paths:
+5. Reference media files using absolute paths with the `relative_url` filter:
    ```markdown
-   ![Image Description](images/your-image.png)
+   ![Image Description]({{ '/assets/posts/YYYY/MM/DD/images/your-image.png' | relative_url }})
    ```
 
 ### Post Organization
 
-Posts are organized in date-based folders (YYYY/MM/DD/) to:
-- Keep related content together
-- Store media files alongside posts
+Posts are organized in date-based folders (YYYY/MM/DD/) with parallel media storage to:
+- Keep related content logically grouped by date
+- Store media files in a parallel structure under `assets/posts/`
 - Maintain a clean, organized structure
-- Make it easy to find and manage posts by date
+- Make it easy to find and manage posts and their media by date
+- Ensure Jekyll correctly serves all media files
 
-Each post folder can contain:
-- The post markdown file (YYYY-MM-DD-title.md)
-- An `images/` subdirectory for images
-- Any other media files (PDFs, videos, etc.) used in the post
+Each post's structure:
+- The post markdown file: `_posts/YYYY/MM/DD/YYYY-MM-DD-title.md`
+- Associated media files: `assets/posts/YYYY/MM/DD/images/`
+- Other files: `assets/posts/YYYY/MM/DD/files/` (for PDFs, downloads, etc.)
+
+For detailed instructions, see `_posts/POST_ORGANIZATION_GUIDE.md`
 
 ## Local Development
 

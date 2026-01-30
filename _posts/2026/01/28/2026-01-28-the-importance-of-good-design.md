@@ -17,7 +17,7 @@ Design plays a crucial role in:
 
 ## Key Design Principles
 
-![Design Principles](images/design-principles.svg)
+![Design Principles]({{ '/assets/posts/2026/01/28/images/design-principles.svg' | relative_url }})
 
 ### Simplicity
 

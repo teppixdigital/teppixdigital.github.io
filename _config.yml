@@ -30,3 +30,4 @@ exclude:
   - LICENSE
   - Gemfile
   - Gemfile.lock
+  - _posts/POST_ORGANIZATION_GUIDE.md
