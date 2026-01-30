@@ -92,8 +92,8 @@ This blog includes privacy-friendly Google Analytics 4 (GA4) integration. To ena
    ```
 
 3. **Privacy & Security Features**:
-   - ✅ IP anonymization enabled
-   - ✅ Secure cookies (SameSite=None;Secure)
+   - ✅ GA4 doesn't collect IP addresses by default (enhanced privacy)
+   - ✅ Secure cookies with CSRF protection (SameSite=Lax;Secure)
    - ✅ Google Signals disabled (no demographics tracking)
    - ✅ Ad personalization disabled
    - ✅ Async script loading for better performance

@@ -17,8 +17,7 @@
         
         // Configure GA4 with privacy-friendly settings
         gtag('config', '{{ site.google_analytics }}', {
-            'anonymize_ip': true,              // Anonymize IP addresses for privacy
-            'cookie_flags': 'SameSite=None;Secure', // Secure cookie configuration
+            'cookie_flags': 'SameSite=Lax;Secure', // Secure cookie configuration with CSRF protection
             'allow_google_signals': false,     // Disable Google Signals (demographics/interests)
             'allow_ad_personalization_signals': false // Disable ad personalization
         });
