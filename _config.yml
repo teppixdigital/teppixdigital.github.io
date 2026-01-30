@@ -1,0 +1,20 @@
+# Site settings
+title: TeppixDigital Blog
+description: About teppixdigital
+baseurl: ""
+url: "https://teppixdigital.github.io"
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+future: true
+
+# Collections
+collections:
+  posts:
+    output: true
+
+# Exclude from build
+exclude:
+  - README.md
+  - LICENSE
