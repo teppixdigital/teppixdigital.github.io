@@ -17,6 +17,8 @@ Design plays a crucial role in:
 
 ## Key Design Principles
 
+![Design Principles]({{ '/assets/posts/2026/01/28/images/design-principles.svg' | relative_url }})
+
 ### Simplicity
 
 Keep interfaces clean and uncluttered. Remove unnecessary elements and focus on what matters most.
