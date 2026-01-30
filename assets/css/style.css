@@ -60,6 +60,11 @@ main {
     list-style: none;
 }
 
+.latest-posts-heading {
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
 .blog-item {
     padding: 1.5rem 0;
     border-bottom: 1px solid #e0e0e0;
@@ -69,17 +74,17 @@ main {
     border-bottom: none;
 }
 
-.blog-item h2 {
+.blog-item h3 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
 }
 
-.blog-item h2 a {
+.blog-item h3 a {
     color: #2c3e50;
     text-decoration: none;
 }
 
-.blog-item h2 a:hover {
+.blog-item h3 a:hover {
     color: #3498db;
 }
 

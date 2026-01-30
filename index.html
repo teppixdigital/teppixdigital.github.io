@@ -4,13 +4,13 @@ title: Home
 ---
 
 <div class="blog-list-container">
-    <h2 style="margin-bottom: 2rem; color: #2c3e50;">Latest Posts</h2>
+    <h2 class="latest-posts-heading">Latest Posts</h2>
     
     {% if site.posts.size > 0 %}
     <ul class="blog-list">
         {% for post in site.posts %}
         <li class="blog-item">
-            <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
             <p class="blog-meta">
                 <time datetime="{{ post.date | date_to_xmlschema }}">
                     {{ post.date | date: "%B %d, %Y" }}

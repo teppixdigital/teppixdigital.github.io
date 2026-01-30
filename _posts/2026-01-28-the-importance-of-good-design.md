@@ -12,7 +12,7 @@ Design plays a crucial role in:
 
 - **First Impressions**: Users form opinions about your product within seconds
 - **Usability**: Good design makes products easier to use and understand
-- - **Brand Identity**: Design helps establish and reinforce your brand
+- **Brand Identity**: Design helps establish and reinforce your brand
 - **Competitive Advantage**: Superior design can set you apart from competitors
 
 ## Key Design Principles
