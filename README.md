@@ -22,7 +22,12 @@ This repository contains a clean, modern blog layout built using Jekyll, the sta
 ├── _layouts/            # Page layouts
 │   ├── default.html     # Main layout template
 │   └── post.html        # Blog post layout
-├── _posts/              # Blog posts (markdown files)
+├── _posts/              # Blog posts organized by date
+│   └── YYYY/            # Year folder
+│       └── MM/          # Month folder
+│           └── DD/      # Day folder
+│               ├── YYYY-MM-DD-title-of-post.md
+│               └── images/  # Post-specific media files
 ├── assets/              # Static assets
 │   └── css/
 │       └── style.css    # Stylesheet
@@ -33,9 +38,10 @@ This repository contains a clean, modern blog layout built using Jekyll, the sta
 
 To add a new blog post:
 
-1. Create a new file in the `_posts/` directory
-2. Name it following the pattern: `YYYY-MM-DD-title-of-post.md`
-3. Add front matter at the top:
+1. Create a date-based folder structure: `_posts/YYYY/MM/DD/`
+2. Create your post file: `_posts/YYYY/MM/DD/YYYY-MM-DD-title-of-post.md`
+3. (Optional) Create an `images/` folder in the same directory for post-specific media
+4. Add front matter at the top of your post:
 
 ```markdown
 ---
@@ -46,6 +52,24 @@ date: YYYY-MM-DD HH:MM:SS +0000
 
 Your content here...
 ```
+
+5. Reference media files using relative paths:
+   ```markdown
+   ![Image Description](images/your-image.png)
+   ```
+
+### Post Organization
+
+Posts are organized in date-based folders (YYYY/MM/DD/) to:
+- Keep related content together
+- Store media files alongside posts
+- Maintain a clean, organized structure
+- Make it easy to find and manage posts by date
+
+Each post folder can contain:
+- The post markdown file (YYYY-MM-DD-title.md)
+- An `images/` subdirectory for images
+- Any other media files (PDFs, videos, etc.) used in the post
 
 ## Local Development
 
