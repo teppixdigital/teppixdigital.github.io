@@ -75,6 +75,35 @@ This blog is automatically deployed via GitHub Pages:
 - **Styling**: Modify `assets/css/style.css`
 - **Layouts**: Edit files in `_layouts/`
 
+## Google Analytics Integration
+
+This blog includes privacy-friendly Google Analytics 4 (GA4) integration. To enable tracking:
+
+1. **Create a GA4 Property**:
+   - Go to [Google Analytics](https://analytics.google.com/)
+   - Create a new GA4 property for your website
+   - Get your Measurement ID (format: `G-XXXXXXXXXX`)
+
+2. **Enable Tracking**:
+   - Open `_config.yml`
+   - Add your Measurement ID to the `google_analytics` field:
+   ```yaml
+   google_analytics: "G-XXXXXXXXXX"
+   ```
+
+3. **Privacy & Security Features**:
+   - ✅ IP anonymization enabled
+   - ✅ Secure cookies (SameSite=None;Secure)
+   - ✅ Google Signals disabled (no demographics tracking)
+   - ✅ Ad personalization disabled
+   - ✅ Async script loading for better performance
+   - ✅ Conditional loading (only when configured)
+
+4. **Disable Tracking**:
+   - To disable, leave the `google_analytics` field empty in `_config.yml`
+
+**Note**: Consider adding a privacy policy and cookie notice to your site to inform users about analytics tracking, as required by GDPR and other privacy regulations.
+
 ## License
 
 See LICENSE file for details.
