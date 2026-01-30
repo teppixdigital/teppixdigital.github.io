@@ -67,7 +67,7 @@ This blog is automatically deployed via GitHub Pages:
 
 1. Push your changes to the repository
 2. GitHub Pages will automatically build and deploy your site
-3. View your blog at `https://teppixdigital.github.io/teppixdigital/`
+3. View your blog at `https://teppixdigital.github.io/`
 
 ## Customization
 
