@@ -1,0 +1,17 @@
+# Site settings
+title: TeppixDigital Blog
+description: Insights and updates about digital solutions from TeppixDigital
+baseurl: "/teppixdigital"
+url: "https://teppixdigital.github.io"
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+# Collections
+# Note: _posts collection is built-in to Jekyll and doesn't need to be declared
+
+# Exclude from build
+exclude:
+  - README.md
+  - LICENSE

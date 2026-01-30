@@ -1,0 +1,29 @@
+---
+layout: default
+title: Home
+---
+
+<div class="blog-list-container">
+    <h2 class="latest-posts-heading">Latest Posts</h2>
+    
+    {% if site.posts.size > 0 %}
+    <ul class="blog-list">
+        {% for post in site.posts %}
+        <li class="blog-item">
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="blog-meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}">
+                    {{ post.date | date: "%B %d, %Y" }}
+                </time>
+            </p>
+            <div class="blog-excerpt">
+                {{ post.excerpt }}
+            </div>
+            <a href="{{ post.url | relative_url }}" class="read-more">Read more &rarr;</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No posts yet. Check back soon!</p>
+    {% endif %}
+</div>
