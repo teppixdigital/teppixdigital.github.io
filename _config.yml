@@ -19,6 +19,11 @@ paginate_path: "/page:num/"
 # Collections
 # Note: _posts collection is built-in to Jekyll and doesn't need to be declared
 
+# Google Analytics
+# Add your Google Analytics 4 measurement ID here (format: G-XXXXXXXXXX)
+# Leave empty to disable tracking
+google_analytics: ""
+
 # Exclude from build
 exclude:
   - README.md
