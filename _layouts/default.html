@@ -7,7 +7,7 @@
     <meta name="description" content="{{ site.description }}">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     
-    {% if site.google_analytics and site.google_analytics != "" %}
+    {% if site.google_analytics %}
     <!-- Google Analytics 4 - Async loading with security best practices -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
     <script>
@@ -17,7 +17,7 @@
         
         // Configure GA4 with privacy-friendly settings
         gtag('config', '{{ site.google_analytics }}', {
-            'cookie_flags': 'SameSite=Lax;Secure', // Secure cookie configuration with CSRF protection
+            'cookie_flags': 'SameSite=Lax;Secure', // Prevent cross-site tracking (requires HTTPS)
             'allow_google_signals': false,     // Disable Google Signals (demographics/interests)
             'allow_ad_personalization_signals': false // Disable ad personalization
         });

@@ -93,11 +93,15 @@ This blog includes privacy-friendly Google Analytics 4 (GA4) integration. To ena
 
 3. **Privacy & Security Features**:
    - ✅ GA4 doesn't collect IP addresses by default (enhanced privacy)
-   - ✅ Secure cookies with CSRF protection (SameSite=Lax;Secure)
+   - ✅ Cross-site tracking prevention (SameSite=Lax;Secure cookies)
    - ✅ Google Signals disabled (no demographics tracking)
    - ✅ Ad personalization disabled
    - ✅ Async script loading for better performance
    - ✅ Conditional loading (only when configured)
+
+4. **Important Notes**:
+   - The `Secure` cookie flag requires HTTPS. Analytics cookies won't be set when testing locally over HTTP (http://localhost:4000), but will work correctly on the live GitHub Pages site (HTTPS).
+   - If your site implements Content Security Policy (CSP), you may need to configure it to allow inline scripts for Google Analytics, or consider implementing nonce-based CSP.
 
 4. **Disable Tracking**:
    - To disable, leave the `google_analytics` field empty in `_config.yml`
