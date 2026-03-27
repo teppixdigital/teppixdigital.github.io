@@ -28,4 +28,9 @@ If you don't know what you're trying to say, your reader won't either.
 
 Finally, write with a purpose. Ask yourself: what should the reader think, feel, or do after reading this? That question alone improve focus dramatically.
 
-New Zealand
+P/S: "if a sentence works without a word, delete it." is about?
+
+Look at each word in a sentence and ask: Does this word add any meaning or clarify? If the answers is no, **cut it**. It's not about removing words randomly - it's about keep your writing **clean and precise**.
+
+
+
