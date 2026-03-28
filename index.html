@@ -4,32 +4,7 @@ title: Home
 ---
 
 <div class="blog-list-container">
-    {% if site.posts.size > 0 %}
-    
-    <!-- Featured Post Section -->
-    {% assign featured_post = site.posts.first %}
-    <div class="featured-section">
-        <h2 class="section-heading">Featured Post</h2>
-        <article class="featured-post">
-            <div class="featured-label">Latest</div>
-            <h3><a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a></h3>
-            <p class="blog-meta">
-                <time datetime="{{ featured_post.date | date_to_xmlschema }}">
-                    {{ featured_post.date | date: "%B %d, %Y" }}
-                </time>
-            </p>
-            <div class="blog-excerpt">
-                {{ featured_post.excerpt }}
-            </div>
-            <a href="{{ featured_post.url | relative_url }}" class="read-more-featured">Read more &rarr;</a>
-        </article>
-    </div>
-
-    <div class="spacer"></div>
-
-    <!-- All Posts Section -->
-    <h2 class="section-heading">All Posts</h2>
-    
+    {% if site.posts.size > 0 %}    
     <ul class="blog-list">
         {% if paginator %}
             {% for post in paginator.posts %}
