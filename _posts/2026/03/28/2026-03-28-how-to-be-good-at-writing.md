@@ -2,11 +2,12 @@
 layout: post
 title: "How to be good at writing"
 date: 2026-03-28 00:00:00 +0000
+excerpt_separator: <!-- more -->
 ---
 
 Getting good at writing isn't about the talent. It's about the habits, feedback, and clarify of thinking.
 
-# How to be good at writing
+<!-- more -->
 
 The fastest way to improve is to focus on a few core principles and practices them deliberately.
 
