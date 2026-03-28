@@ -85,7 +85,7 @@ body {
 header {
   padding: 2.5rem 0;
   margin-bottom: 3rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .header-content {
@@ -343,7 +343,7 @@ main {
 .post-header {
   margin-bottom: 2.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 3px solid #e9ecef;
+  /* border-bottom: 3px solid #e9ecef; */
   /* text-align: center; */
 }
 
