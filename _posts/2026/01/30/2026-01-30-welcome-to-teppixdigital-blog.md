@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Welcome to TeppixDigital Blog"
+title: "Welcome to TeppiDigital Blog"
 date: 2026-01-30 10:00:00 +0000
 ---
 
-Welcome to the TeppixDigital blog! This is our first post on our new blog platform built with GitHub Pages.
+Welcome to the TeppiDigital blog! This is our first post on our new blog platform built with GitHub Pages.
 
-## What is TeppixDigital?
+## What is TeppiDigital?
 
-TeppixDigital is a digital solutions company focused on delivering innovative and creative digital experiences. We're excited to share our thoughts, insights, and updates with you through this blog.
+TeppiDigital is a digital solutions company focused on delivering innovative and creative digital experiences. We're excited to share our thoughts, insights, and updates with you through this blog.
 
 ## What to Expect
 

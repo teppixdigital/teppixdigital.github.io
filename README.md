@@ -1,6 +1,6 @@
-# TeppixDigital Blog
+# TeppiDigital Blog
 
-A simple blog built with Jekyll for GitHub Pages, featuring insights and updates about digital solutions from TeppixDigital.
+A simple blog built with Jekyll for GitHub Pages, featuring insights and updates about digital solutions from TeppiDigital.
 
 ## Overview
 
@@ -44,6 +44,11 @@ To add a new blog post:
 2. Create your post file: `_posts/YYYY/MM/DD/YYYY-MM-DD-title-of-post.md`
 3. (Optional) Create a parallel media folder: `assets/posts/YYYY/MM/DD/images/`
 4. Add front matter at the top of your post:
+
+Or run command 
+```bash
+make new-post TITLE="My Post Title"
+```
 
 ```markdown
 ---
