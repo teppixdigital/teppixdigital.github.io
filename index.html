@@ -1,72 +1,138 @@
 ---
 layout: default
 title: Home
+has_sidebar: true
 ---
 
-<div class="blog-list-container">
-    {% if site.posts.size > 0 %}    
-    <ul class="blog-list">
-        {% if paginator %}
-            {% for post in paginator.posts %}
-            <li class="blog-item">
-                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p class="blog-meta">
-                    <time datetime="{{ post.date | date_to_xmlschema }}">
-                        {{ post.date | date: "%B %d, %Y" }}
-                    </time>
-                </p>
-                <div class="blog-excerpt">
-                    {{ post.excerpt }}
-                </div>
-                <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+<div class="home-layout">
+
+    <!-- Recent Posts Sidebar -->
+    <aside class="sidebar" id="recentPostsSidebar" role="complementary" aria-label="Recent posts">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close recent posts navigation">&times;</button>
+        <h2 class="sidebar-heading">Recent Posts</h2>
+        <ul class="sidebar-post-list">
+            {% for post in site.posts limit:5 %}
+            <li class="sidebar-post-item">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                <time datetime="{{ post.date | date_to_xmlschema }}" class="sidebar-post-date">
+                    {{ post.date | date: "%b %d, %Y" }}
+                </time>
             </li>
-            <div class="post-spacer"></div>
             {% endfor %}
-        {% else %}
-            {% for post in site.posts %}
-            <li class="blog-item">
-                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p class="blog-meta">
-                    <time datetime="{{ post.date | date_to_xmlschema }}">
-                        {{ post.date | date: "%B %d, %Y" }}
-                    </time>
-                </p>
-                <div class="blog-excerpt">
-                    {{ post.excerpt }}
-                </div>
-                <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
-            </li>
-            <div class="post-spacer"></div>
-            {% endfor %}
-        {% endif %}
-    </ul>
+        </ul>
+    </aside>
 
-    <!-- Pagination -->
-    {% if paginator %}
-    <nav class="pagination" aria-label="Blog post pagination">
-        {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link pagination-prev">
-                &larr; Newer Posts
-            </a>
-        {% else %}
-            <span class="pagination-link pagination-prev disabled">&larr; Newer Posts</span>
-        {% endif %}
+    <!-- Main content -->
+    <div class="home-main-content">
+        <div class="blog-list-container">
+            {% if site.posts.size > 0 %}
+            <ul class="blog-list">
+                {% if paginator %}
+                    {% for post in paginator.posts %}
+                    <li class="blog-item">
+                        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                        <p class="blog-meta">
+                            <time datetime="{{ post.date | date_to_xmlschema }}">
+                                {{ post.date | date: "%B %d, %Y" }}
+                            </time>
+                        </p>
+                        <div class="blog-excerpt">
+                            {{ post.excerpt }}
+                        </div>
+                        <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
+                    </li>
+                    <div class="post-spacer"></div>
+                    {% endfor %}
+                {% else %}
+                    {% for post in site.posts %}
+                    <li class="blog-item">
+                        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                        <p class="blog-meta">
+                            <time datetime="{{ post.date | date_to_xmlschema }}">
+                                {{ post.date | date: "%B %d, %Y" }}
+                            </time>
+                        </p>
+                        <div class="blog-excerpt">
+                            {{ post.excerpt }}
+                        </div>
+                        <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
+                    </li>
+                    <div class="post-spacer"></div>
+                    {% endfor %}
+                {% endif %}
+            </ul>
 
-        <span class="pagination-info">
-            Page {{ paginator.page }} of {{ paginator.total_pages }}
-        </span>
+            <!-- Pagination -->
+            {% if paginator %}
+            <nav class="pagination" aria-label="Blog post pagination">
+                {% if paginator.previous_page %}
+                    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link pagination-prev">
+                        &larr; Newer Posts
+                    </a>
+                {% else %}
+                    <span class="pagination-link pagination-prev disabled">&larr; Newer Posts</span>
+                {% endif %}
 
-        {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link pagination-next">
-                Older Posts &rarr;
-            </a>
-        {% else %}
-            <span class="pagination-link pagination-next disabled">Older Posts &rarr;</span>
-        {% endif %}
-    </nav>
-    {% endif %}
+                <span class="pagination-info">
+                    Page {{ paginator.page }} of {{ paginator.total_pages }}
+                </span>
 
-    {% else %}
-    <p>No posts yet. Check back soon!</p>
-    {% endif %}
+                {% if paginator.next_page %}
+                    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link pagination-next">
+                        Older Posts &rarr;
+                    </a>
+                {% else %}
+                    <span class="pagination-link pagination-next disabled">Older Posts &rarr;</span>
+                {% endif %}
+            </nav>
+            {% endif %}
+
+            {% else %}
+            <p>No posts yet. Check back soon!</p>
+            {% endif %}
+        </div>
+    </div>
+
 </div>
+
+<script>
+(function () {
+    var toggle = document.getElementById('sidebarToggle');
+    var sidebar = document.getElementById('recentPostsSidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+    var closeBtn = document.getElementById('sidebarClose');
+
+    if (!toggle || !sidebar) return;
+
+    function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        document.body.classList.add('sidebar-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        overlay.removeAttribute('aria-hidden');
+        closeBtn.focus();
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.focus();
+    }
+
+    toggle.addEventListener('click', openSidebar);
+    overlay.addEventListener('click', closeSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+            closeSidebar();
+        }
+    });
+})();
+</script>

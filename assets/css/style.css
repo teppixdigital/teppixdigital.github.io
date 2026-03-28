@@ -799,3 +799,217 @@ img {
         transform: translateY(-3px);
     }
 }
+
+/* ===================================================
+   Home Page: Sidebar + Content Layout
+   =================================================== */
+
+/* Header with sidebar toggle button */
+.header-inner {
+    position: relative;
+}
+
+/* Two-column layout: sidebar left, content right */
+.home-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* Sidebar – desktop */
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background-color: #f4f6f8;
+    border: 1px solid #dde2e8;
+    border-radius: 8px;
+    padding: 1.25rem;
+    position: sticky;
+    top: 1rem;
+}
+
+.sidebar-heading {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.sidebar-post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-post-item {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #dde2e8;
+}
+
+.sidebar-post-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.sidebar-post-item a {
+    display: block;
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 0.2rem;
+    transition: color 0.2s ease;
+}
+
+.sidebar-post-item a:hover {
+    color: #3498db;
+}
+
+.sidebar-post-date {
+    display: block;
+    font-size: 0.78rem;
+    color: #7f8c8d;
+}
+
+/* Main content area (right of sidebar) */
+.home-main-content {
+    flex: 1;
+    min-width: 0; /* prevent flex overflow */
+}
+
+/* Sidebar close button – hidden on desktop */
+.sidebar-close {
+    display: none;
+}
+
+/* Hamburger toggle – hidden on desktop */
+.sidebar-toggle {
+    display: none;
+}
+
+/* Sidebar overlay – hidden by default */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    cursor: pointer;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* Prevent body scroll when mobile sidebar is open */
+body.sidebar-open {
+    overflow: hidden;
+}
+
+/* ===================================================
+   Responsive: Mobile sidebar (≤ 768px)
+   =================================================== */
+@media (max-width: 768px) {
+
+    /* Stack layout vertically */
+    .home-layout {
+        display: block;
+    }
+
+    /* Sidebar: slide-in panel from the left */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -290px;
+        width: 270px;
+        height: 100vh;
+        overflow-y: auto;
+        border-radius: 0;
+        border: none;
+        border-right: 1px solid #dde2e8;
+        background-color: #ffffff;
+        z-index: 1000;
+        padding: 4rem 1.25rem 1.25rem;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.18);
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    /* Close button inside sidebar (mobile) */
+    .sidebar-close {
+        display: block;
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        line-height: 1;
+        cursor: pointer;
+        color: #5f6b7a;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: color 0.2s ease;
+    }
+
+    .sidebar-close:hover {
+        color: #2c3e50;
+    }
+
+    /* Hamburger button in header (mobile) */
+    .sidebar-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        padding: 9px 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 6px;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: background 0.2s ease;
+    }
+
+    .sidebar-toggle:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .hamburger-line {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Animate hamburger to X when sidebar is open */
+    .sidebar-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .sidebar-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    .sidebar-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Give title area room for the hamburger button */
+    .header-inner {
+        padding-right: 52px;
+    }
+}

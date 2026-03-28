@@ -27,9 +27,16 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header role="banner">
-        <div class="container">
+        <div class="container{% if page.has_sidebar %} header-inner{% endif %}">
             <h1><a href="{{ '/' | relative_url }}" aria-label="{{ site.title }} – go to home">{{ site.title }}</a></h1>
             <p>{{ site.description }}</p>
+            {% if page.has_sidebar %}
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open recent posts navigation" aria-expanded="false" aria-controls="recentPostsSidebar">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            {% endif %}
         </div>
     </header>
 
