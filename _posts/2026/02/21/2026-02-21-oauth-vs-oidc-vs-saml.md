@@ -2,6 +2,7 @@
 layout: post
 title: "OAuth vs OIDC vs SAML"
 date: 2026-02-21 10:00:00 +0000
+mermaid: true
 ---
 
 # OAuth vs OIDC vs SAML
