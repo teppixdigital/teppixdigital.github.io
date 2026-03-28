@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Home
-has_sidebar: true
 ---
 
 <div class="home-layout">
@@ -78,42 +77,3 @@ has_sidebar: true
     </div>
 
 </div>
-
-<script>
-(function () {
-    var toggle = document.getElementById('sidebarToggle');
-    var sidebar = document.getElementById('recentPostsSidebar');
-    var overlay = document.getElementById('sidebarOverlay');
-    var closeBtn = document.getElementById('sidebarClose');
-
-    if (!toggle || !sidebar) return;
-
-    function openSidebar() {
-        sidebar.classList.add('open');
-        overlay.classList.add('active');
-        document.body.classList.add('sidebar-open');
-        toggle.setAttribute('aria-expanded', 'true');
-        overlay.removeAttribute('aria-hidden');
-        closeBtn.focus();
-    }
-
-    function closeSidebar() {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('active');
-        document.body.classList.remove('sidebar-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        overlay.setAttribute('aria-hidden', 'true');
-        toggle.focus();
-    }
-
-    toggle.addEventListener('click', openSidebar);
-    overlay.addEventListener('click', closeSidebar);
-    closeBtn.addEventListener('click', closeSidebar);
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-            closeSidebar();
-        }
-    });
-})();
-</script>

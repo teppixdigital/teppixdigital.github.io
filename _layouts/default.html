@@ -1,88 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-    <meta name="description" content="{{ site.description }}">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}
+    </title>
+    <meta name="description" content="{{ site.description }}" />
+    <link
+      rel="stylesheet"
+      href="{{ '/assets/css/style.css' | relative_url }}"
+    />
+
     {% if site.google_analytics %}
     <!-- Google Analytics 4 - Async loading with security best practices -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        // Configure GA4 with privacy-friendly settings
-        gtag('config', '{{ site.google_analytics }}', {
-            'cookie_flags': 'SameSite=Lax;Secure', // Prevent cross-site tracking (requires HTTPS)
-            'allow_google_signals': false,     // Disable Google Signals (demographics/interests)
-            'allow_ad_personalization_signals': false // Disable ad personalization
-        });
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      // Configure GA4 with privacy-friendly settings
+      gtag("config", "{{ site.google_analytics }}", {
+        cookie_flags: "SameSite=Lax;Secure", // Prevent cross-site tracking (requires HTTPS)
+        allow_google_signals: false, // Disable Google Signals (demographics/interests)
+        allow_ad_personalization_signals: false, // Disable ad personalization
+      });
     </script>
     {% endif %}
-</head>
-<body>
+  </head>
+  <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header role="banner">
-        <div class="container{% if page.has_sidebar %} header-inner{% endif %}">
-            <h1><a href="{{ '/' | relative_url }}" aria-label="{{ site.title }} – go to home">{{ site.title }}</a></h1>
-            <p>{{ site.description }}</p>
-            {% if page.has_sidebar %}
-            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open recent posts navigation" aria-expanded="false" aria-controls="recentPostsSidebar">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-            {% endif %}
-        </div>
+      <div class="container">
+        <h1>
+          <a
+            href="{{ '/' | relative_url }}"
+            aria-label="{{ site.title }} – go to home"
+            >{{ site.title }}</a
+          >
+        </h1>
+        <p>{{ site.description }}</p>
+      </div>
     </header>
 
-    {% if page.has_sidebar %}
-    <!-- Sidebar overlay (mobile) -->
-    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
-
-    <!-- Recent Posts Sidebar -->
-    <aside class="sidebar" id="recentPostsSidebar" role="complementary" aria-label="Recent posts">
-        <button class="sidebar-close" id="sidebarClose" aria-label="Close recent posts navigation">&times;</button>
-        <h2 class="sidebar-heading">Recent Posts</h2>
-        <ul class="sidebar-post-list">
-            {% for post in site.posts limit:5 %}
-            <li class="sidebar-post-item">
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                <time datetime="{{ post.date | date_to_xmlschema }}" class="sidebar-post-date">
-                    {{ post.date | date: "%b %d, %Y" }}
-                </time>
-            </li>
-            {% endfor %}
-        </ul>
-    </aside>
-    {% endif %}
-
-    <main id="main-content" class="container" tabindex="-1">
-        {{ content }}
-    </main>
+    <main id="main-content" class="container" tabindex="-1">{{ content }}</main>
 
     <footer role="contentinfo">
-        <div class="container">
-            <p>&copy; 2026 {{ site.title }}. All rights reserved.</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2026 {{ site.title }}. All rights reserved.</p>
+      </div>
     </footer>
 
     {% if page.mermaid %}
     <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-        document.querySelectorAll('pre > code.language-mermaid').forEach(el => {
-            const div = document.createElement('div');
-            div.className = 'mermaid';
-            div.textContent = el.textContent;
-            el.parentElement.replaceWith(div);
-        });
-        mermaid.initialize({ startOnLoad: false });
-        await mermaid.run();
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      document.querySelectorAll("pre > code.language-mermaid").forEach((el) => {
+        const div = document.createElement("div");
+        div.className = "mermaid";
+        div.textContent = el.textContent;
+        el.parentElement.replaceWith(div);
+      });
+      mermaid.initialize({ startOnLoad: false });
+      await mermaid.run();
     </script>
     {% endif %}
-</body>
+  </body>
 </html>
