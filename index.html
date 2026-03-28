@@ -18,7 +18,7 @@ title: Home
                 <div class="blog-excerpt">
                     {{ post.excerpt }}
                 </div>
-                <a href="{{ post.url | relative_url }}" class="read-more">Read more &rarr;</a>
+                <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
             </li>
             <div class="post-spacer"></div>
             {% endfor %}
@@ -34,7 +34,7 @@ title: Home
                 <div class="blog-excerpt">
                     {{ post.excerpt }}
                 </div>
-                <a href="{{ post.url | relative_url }}" class="read-more">Read more &rarr;</a>
+                <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
             </li>
             <div class="post-spacer"></div>
             {% endfor %}
@@ -43,7 +43,7 @@ title: Home
 
     <!-- Pagination -->
     {% if paginator %}
-    <nav class="pagination">
+    <nav class="pagination" aria-label="Blog post pagination">
         {% if paginator.previous_page %}
             <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link pagination-prev">
                 &larr; Newer Posts

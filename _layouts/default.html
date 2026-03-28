@@ -25,18 +25,19 @@
     {% endif %}
 </head>
 <body>
-    <header>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header role="banner">
         <div class="container">
-            <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+            <h1><a href="{{ '/' | relative_url }}" aria-label="{{ site.title }} – go to home">{{ site.title }}</a></h1>
             <p>{{ site.description }}</p>
         </div>
     </header>
 
-    <main class="container">
+    <main id="main-content" class="container" tabindex="-1">
         {{ content }}
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; 2026 {{ site.title }}. All rights reserved.</p>
         </div>
