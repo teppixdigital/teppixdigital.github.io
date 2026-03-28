@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to be good at writing"
-date: 2026-03-28 10:00:00 +0000
+date: 2026-03-28 00:00:00 +0000
 ---
 
 Getting good at writing isn't about the talent. It's about the habits, feedback, and clarify of thinking.
