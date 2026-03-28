@@ -40,6 +40,27 @@
         </div>
     </header>
 
+    {% if page.has_sidebar %}
+    <!-- Sidebar overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <!-- Recent Posts Sidebar -->
+    <aside class="sidebar" id="recentPostsSidebar" role="complementary" aria-label="Recent posts">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close recent posts navigation">&times;</button>
+        <h2 class="sidebar-heading">Recent Posts</h2>
+        <ul class="sidebar-post-list">
+            {% for post in site.posts limit:5 %}
+            <li class="sidebar-post-item">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                <time datetime="{{ post.date | date_to_xmlschema }}" class="sidebar-post-date">
+                    {{ post.date | date: "%b %d, %Y" }}
+                </time>
+            </li>
+            {% endfor %}
+        </ul>
+    </aside>
+    {% endif %}
+
     <main id="main-content" class="container" tabindex="-1">
         {{ content }}
     </main>

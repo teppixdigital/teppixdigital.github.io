@@ -342,7 +342,7 @@ main {
 
 .post-title {
     font-size: 2.5rem;
-    color: #2c3e50;
+    /* color: #2c3e50; */
     margin-bottom: 1rem;
     font-weight: 700;
     line-height: 1.3;
