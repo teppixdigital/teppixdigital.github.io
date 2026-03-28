@@ -103,6 +103,30 @@ This blog is automatically deployed via GitHub Pages:
 2. GitHub Pages will automatically build and deploy your site
 3. View your blog at `https://teppixdigital.github.io/`
 
+## Mermaid Diagrams
+
+Posts support [Mermaid](https://mermaid.js.org/) diagrams. To enable diagrams in a post, add `mermaid: true` to its front matter:
+
+```markdown
+---
+layout: post
+title: "My Post"
+date: 2026-03-28 10:00:00 +0000
+mermaid: true
+---
+
+Here is a diagram:
+
+```mermaid
+flowchart LR
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Do it]
+    B -->|No| D[Skip it]
+```
+```
+
+Mermaid JS is only loaded on pages that set `mermaid: true`, keeping other pages fast.
+
 ## Customization
 
 - **Site title and description**: Edit `_config.yml`
