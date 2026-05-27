@@ -86,22 +86,30 @@ For detailed instructions, see `_posts/POST_ORGANIZATION_GUIDE.md`
 To test the blog locally:
 
 ```bash
-# Install Jekyll (one time only)
-gem install jekyll bundler
+# Install dependencies
+bundle install
 
 # Build and serve the site
-jekyll serve
+bundle exec jekyll serve
 
 # View at http://localhost:4000
 ```
 
+To run a production-style build locally:
+
+```bash
+JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter
+```
+
 ## Deployment
 
-This blog is automatically deployed via GitHub Pages:
+This blog uses the `github-pages` gem for local/runtime parity with GitHub Pages:
 
 1. Push your changes to the repository
 2. GitHub Pages will automatically build and deploy your site
 3. View your blog at `https://teppixdigital.github.io/`
+
+Continuous integration also runs Jekyll validation on every pull request and push to `main`.
 
 ## Mermaid Diagrams
 
@@ -142,11 +150,15 @@ This blog includes privacy-friendly Google Analytics 4 (GA4) integration. To ena
    - Create a new GA4 property for your website
    - Get your Measurement ID (format: `G-XXXXXXXXXX`)
 
-2. **Enable Tracking**:
-   - Open `_config.yml`
-   - Add your Measurement ID to the `google_analytics` field:
+2. **Enable Tracking (environment-specific)**:
+   - Keep `_config.yml` committed with an empty default value.
+   - In deployment-specific config (for example `_config.production.yml`), add your Measurement ID:
    ```yaml
    google_analytics: "G-XXXXXXXXXX"
+   ```
+   - Build with multiple configs when needed:
+   ```bash
+   bundle exec jekyll build --config _config.yml,_config.production.yml
    ```
 
 3. **Privacy & Security Features**:
@@ -166,7 +178,16 @@ This blog includes privacy-friendly Google Analytics 4 (GA4) integration. To ena
 
 **Note**: Consider adding a privacy policy and cookie notice to your site to inform users about analytics tracking, as required by GDPR and other privacy regulations.
 
+## Contributing
+
+Before opening a pull request:
+
+1. Install dependencies: `bundle install`
+2. Run build checks: `bundle exec jekyll build --strict_front_matter`
+3. For local preview: `bundle exec jekyll serve`
+4. For new articles, use: `make new-post TITLE="Your Post Title"`
+5. Ensure required post front matter keys are present: `layout`, `title`, `date`
+
 ## License
 
 See LICENSE file for details.
-
