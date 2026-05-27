@@ -9,6 +9,7 @@ new-post:
 		exit 1; \
 	fi
 	@DATE=$$(date +%Y-%m-%d); \
+	NOW=$$(date '+%Y-%m-%d %H:%M:%S %z'); \
 	YEAR=$$(date +%Y); \
 	MONTH=$$(date +%m); \
 	DAY=$$(date +%d); \
@@ -17,6 +18,6 @@ new-post:
 	mkdir -p "_posts/$$YEAR/$$MONTH/$$DAY"; \
 	mkdir -p "assets/posts/$$YEAR/$$MONTH/$$DAY/images"; \
 	mkdir -p "assets/posts/$$YEAR/$$MONTH/$$DAY/files"; \
-	printf -- '---\nlayout: post\ntitle: "%s"\ndate: %s 10:00:00 +0000\n---\n\nWrite your post content here.\n' "$(POST_TITLE)" "$$DATE" > "$$FILE"; \
+	printf -- '---\nlayout: post\ntitle: "%s"\ndate: %s\n---\n\nWrite your post content here.\n' "$(POST_TITLE)" "$$NOW" > "$$FILE"; \
 	echo "Created post: $$FILE"; \
 	echo "Media folders: assets/posts/$$YEAR/$$MONTH/$$DAY/{images,files}"
