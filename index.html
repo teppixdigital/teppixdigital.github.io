@@ -12,13 +12,14 @@ title: Home
       {% assign posts = site.posts %}
     {% endif %}
 
+    {% assign excerpt_length = site.excerpt_length | default: 180 %}
     {% for post in posts %}
     <li class="blog-item">
       <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       <p class="blog-meta">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
       </p>
-      <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+      <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: excerpt_length }}</p>
       <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
     </li>
     {% endfor %}
