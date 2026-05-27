@@ -111,18 +111,18 @@ main {
   border-bottom: 0;
 }
 
-.blog-item h2 {
+.blog-item h3 {
   font-size: 1.45rem;
   line-height: 1.35;
   margin-bottom: 0.35rem;
 }
 
-.blog-item h2 a {
+.blog-item h3 a {
   color: inherit;
   text-decoration: none;
 }
 
-.blog-item h2 a:hover {
+.blog-item h3 a:hover {
   color: var(--accent);
 }
 
@@ -292,7 +292,7 @@ footer p {
     padding: 1.1rem;
   }
 
-  .blog-item h2 {
+  .blog-item h3 {
     font-size: 1.25rem;
   }
 

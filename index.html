@@ -15,7 +15,7 @@ title: Home
     {% assign excerpt_length = site.excerpt_length | default: 180 %}
     {% for post in posts %}
     <li class="blog-item">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
       <p class="blog-meta">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
       </p>
